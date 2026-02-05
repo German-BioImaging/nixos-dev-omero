@@ -1,24 +1,21 @@
 # nixos-dev-omero
-NixOS configuration and HowTo for an out of the box setup to contribute to OMERO.web and plugins
+NixOS configuration and HowTo for an out of the box setup to contribute to OMERO.web and plugins.
+
 
 ## Components
 
 This development environment consists of two main components:
 
 ### 1. OMERO Server and PostgreSQL Database (Docker)
-The OMERO server and PostgreSQL database run in Docker containers using the official OMERO server image. This provides a stable and isolated backend for development.
-
-- **Recipe source**: [openmicroscopy/omero-server on Docker Hub](https://hub.docker.com/r/openmicroscopy/omero-server)
-- The containerized setup ensures consistent behavior across different development environments
-- Handles all data storage, metadata management, and server-side operations
+For development purpose, OMERO.web and plugins need a test server to connect to. This server doesn't have to be local, but it is nevertheless recommended.
+The OMERO.server and PostgreSQL database are not yet part of this NixOS setup. You can however set them easily locally with Docker Desktop. 
+See [openmicroscopy/omero-server on Docker Hub](https://hub.docker.com/r/openmicroscopy/omero-server) for instructions.
 
 ### 2. NixOS for OMERO.web Development
 NixOS is used to run the OMERO.web development server from source, along with any plugins you're developing.
-
-- Provides a reproducible development environment
-- Allows running OMERO.web from source for easy debugging and development
-- Supports plugin development with hot-reloading capabilities
-- Ensures all dependencies are properly managed and isolated
+This repo provides configuration files for the NixOS that you will have to copy in the right folders. 
+Once this is done, you will have all the necessary library and configurations to setup your omero-web python environment.
+To work on a given project (omero-figure, omero-web, ...), clone your own fork of the corresponding Github repos, follow the setup instructions in the repo description, and voilà!
 
 ## Getting Started on Windows
 
@@ -35,3 +32,11 @@ Windows users can run NixOS using the Windows Subsystem for Linux (WSL). Here's 
 - [WSL Documentation](https://learn.microsoft.com/en-us/windows/wsl/)
 - [NixOS Manual](https://nixos.org/manual/nixos/stable/)
 - [Docker on WSL 2](https://docs.docker.com/desktop/windows/wsl/)
+
+## Using this repository in your NixOS
+
+### Clone the repository and copy environment files
+
+## Acknowledgements
+Originally made by @wiessall during the de.NBI hackathon 2025.
+Tested by @Tom-TBT
