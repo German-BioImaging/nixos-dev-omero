@@ -28,7 +28,6 @@ Windows users can run NixOS using the Windows Subsystem for Linux (WSL). Here's 
 
 1. **Install WSL**: Follow the [official Microsoft WSL installation guide](https://learn.microsoft.com/en-us/windows/wsl/install)
 2. **Install NixOS on WSL**: Use [NixOS-WSL](https://github.com/nix-community/NixOS-WSL) for a seamless NixOS experience on Windows
-   - Follow the installation instructions at: https://github.com/nix-community/NixOS-WSL
 3. **Install Docker Desktop for Windows**: Download from [Docker's official website](https://www.docker.com/products/docker-desktop)
    - Enable WSL 2 integration in Docker Desktop settings
 
