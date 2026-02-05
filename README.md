@@ -120,7 +120,10 @@ npm run build
 ```
 OMERO.figure should then be the dev version from the cloned repo. See the repo for more detailed instructions.
 
+## Develop in VS Code
 
+To work on the code from VS Code, install the WSL extension and connect to your WSL!
+https://code.visualstudio.com/docs/remote/wsl
 
 
 ## Acknowledgements
