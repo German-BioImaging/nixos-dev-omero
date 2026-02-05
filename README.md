@@ -8,8 +8,13 @@ This development environment consists of two main components:
 
 ### 1. OMERO Server and PostgreSQL Database (Docker)
 For development purpose, OMERO.web and plugins need a test server to connect to. This server doesn't have to be local, but it is nevertheless recommended.
-The OMERO.server and PostgreSQL database are not yet part of this NixOS setup. You can however set them easily locally with Docker Desktop. 
+I provide two version of flake.nix (in the initial directory of this repo), one with and one without Docker. If you wish to run Docker container
+from within Nix, a Docker integration with WSL exists. I failed however to configure it, so there are two alternatives:
+* simply run your OMERO.server and PostgreSQL database containers in Docker desktop (in your Windows)
+* Install docker in NixOS (for that use `flake.nix.with_docker` instead, see below)
+
 See [openmicroscopy/omero-server on Docker Hub](https://hub.docker.com/r/openmicroscopy/omero-server) for instructions.
+Or https://github.com/ome/docker-example-omero (best to run it without OMERO.web since we want to run OMERO.web from source for development purposes).
 
 ### 2. NixOS for OMERO.web Development
 NixOS is used to run the OMERO.web development server from source, along with any plugins you're developing.
@@ -70,6 +75,15 @@ source .venv/bin/activate
 uv sync
 ```
 
+(optional) If you want to install docker **inside** NixOS, use the other configuration file:
+```
+sudo cp ~/nixos-dev-omero/initial/flake.nix.with_docker /etc/nixos/flake.nix.with_docker
+cd /etc/nixos
+sudo mv flake.nix flake.nix.no_docker
+sudo mv flake.nix.with_docker flake.nix
+sudo nixos-rebuild switch --flake .#
+```
+
 ## Setup OMERO.web and an example plugins
 
 ### OMERO.web
@@ -127,5 +141,5 @@ https://code.visualstudio.com/docs/remote/wsl
 
 
 ## Acknowledgements
-Originally made by @wiessall during the de.NBI hackathon 2025.
-Tested and corrected by @Tom-TBT
+Originally made by @wiessall during the de.NBI hackathon 2025.<br/>
+Tested and extended by @Tom-TBT
